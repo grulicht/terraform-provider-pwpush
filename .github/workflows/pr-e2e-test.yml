@@ -21,9 +21,6 @@ jobs:
         run: |
           find e2e-tests -name "main.tf" -exec sed -i 's|source *= *"grulicht/pwpush"|source = "localdomain/local/pwpush"|' {} +
 
-      - name: 🐳 Start Pwpush via Docker Compose
-        run: make up
-
       - name: ⬇️ Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:

@@ -13,9 +13,6 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐳 Start Pwpush via Docker Compose
-        run: make up
-
       - name: ⬇️ Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
