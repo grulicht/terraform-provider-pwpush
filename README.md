@@ -19,7 +19,7 @@
       <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/grulicht/terraform-provider-pwpush">
     </a>
     <a href="https://github.com/grulicht/terraform-provider-pwpush/actions?query=workflow%3Arelease">
-      <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/grulicht/terraform-provider-pwpush/release.yml?branch=main&label=release">
+      <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/grulicht/terraform-provider-pwpush/release.yml?label=release">
     </a>
     <a href="https://github.com/grulicht/terraform-provider-pwpush/releases">
       <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/grulicht/terraform-provider-pwpush?include_prereleases">
@@ -35,6 +35,23 @@
 A [Terraform](https://www.terraform.io) provider to manage [Password Pusher](https://pwpush.com/) resources via its REST API using Terraform.
 
 It supports provisioning and configuration of secure one-time pushes – including secrets, files, URLs, and QR codes – with expiration and passphrase protection.
+
+---
+
+## 💼 Use Cases
+
+Here are practical scenarios where using the `pwpush` Terraform provider is ideal compared to manual usage:
+
+- ✅ **GitOps & automation**: Push secrets in CI/CD pipelines as part of automated infrastructure provisioning.
+- 🔐 **Temporary credential sharing**: Safely share credentials with newly created users, contractors, or services.
+- 🛠️ **Immutable environments**: Recreate secrets on every Terraform run as part of a secure, reproducible workflow.
+- 📤 **Credential delivery**: Deliver generated passwords (e.g., via Terraform random provider) to human recipients.
+- 🚫 **Avoid storing secrets in state files**: Send secrets via expiring link instead of embedding in outputs or storage.
+- 🧪 **Secret testing environments**: Create disposable, time-limited secrets for test or staging use.
+- 🧾 **Auditable provisioning**: Keep track of when secrets are pushed and for what purpose via version control.
+- 📦 **Multi-platform provisioning**: Coordinate secret delivery alongside cloud or on-prem resource provisioning.
+
+This provider makes it easy to integrate secure secret sharing into infrastructure-as-code workflows, especially where automation and reproducibility are key.
 
 ---
 

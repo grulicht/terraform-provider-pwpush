@@ -31,32 +31,6 @@ output "push_url" {
 }
 ```
 
-### Create a Push With Files (requires authentication)
-
-```hcl
-provider "pwpush" {
-  email  = "you@example.com"
-  token  = "your_api_token"
-}
-
-resource "pwpush_push" "with_files" {
-  payload  = "confidential"
-  note     = "Employment contract"
-
-  files = [
-    "./contracts/employment.pdf",
-    "./contracts/nda.pdf"
-  ]
-
-  expire_after_views = 1
-  passphrase         = "strong-passphrase"
-}
-
-output "push_url" {
-  value = pwpush_push.with_files.html_url
-}
-```
-
 ### Create a URL Push
 
 ```hcl
@@ -82,6 +56,32 @@ output "push_url" {
   value = pwpush_push.qr_push.html_url
 }
 
+```
+
+### Create a Push With Files (requires authentication)
+
+```hcl
+provider "pwpush" {
+  email  = "you@example.com"
+  token  = "your_api_token"
+}
+
+resource "pwpush_push" "with_files" {
+  payload  = "confidential"
+  note     = "Employment contract"
+
+  files = [
+    "./contracts/employment.pdf",
+    "./contracts/nda.pdf"
+  ]
+
+  expire_after_views = 1
+  passphrase         = "strong-passphrase"
+}
+
+output "push_url" {
+  value = pwpush_push.with_files.html_url
+}
 ```
 
 ---
