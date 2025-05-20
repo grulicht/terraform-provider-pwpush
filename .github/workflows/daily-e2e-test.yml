@@ -41,7 +41,7 @@ jobs:
       - name: 🧪 Run Terraform E2E tests (push-url)
         run: |
           echo "▶️ Running full Terraform cycle in e2e-tests/push-url"
-          cd "e2e-tests/$dir"
+          cd "e2e-tests/push-url"
           terraform init -input=false
           terraform fmt -check
           terraform validate
