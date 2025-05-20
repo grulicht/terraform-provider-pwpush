@@ -1,6 +1,7 @@
 variable "payload" {
   description = "The secret payload to be pushed"
   type        = string
+  default     = "some-secret"
 }
 
 variable "note" {

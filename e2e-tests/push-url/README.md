@@ -18,7 +18,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_url_note"></a> [url\_note](#input\_url\_note) | Optional note for the URL push | `string` | `"URL-based push example"` | no |
-| <a name="input_url_payload"></a> [url\_payload](#input\_url\_payload) | The URL to be pushed | `string` | n/a | yes |
+| <a name="input_url_payload"></a> [url\_payload](#input\_url\_payload) | The URL to be pushed | `string` | `"https://some-url.com"` | no |
 
 ## Outputs
 

@@ -1,6 +1,7 @@
 variable "url_payload" {
   description = "The URL to be pushed"
   type        = string
+  default     = "https://some-url.com"
 }
 
 variable "url_note" {

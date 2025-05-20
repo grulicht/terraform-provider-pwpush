@@ -18,7 +18,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_qr_note"></a> [qr\_note](#input\_qr\_note) | Optional note for the QR push | `string` | `"QR-based push example"` | no |
-| <a name="input_qr_payload"></a> [qr\_payload](#input\_qr\_payload) | The content to be encoded in the QR push | `string` | n/a | yes |
+| <a name="input_qr_payload"></a> [qr\_payload](#input\_qr\_payload) | The content to be encoded in the QR push | `string` | `"WiFi: MyNetwork;Password: s3cr3t"` | no |
 
 ## Outputs
 

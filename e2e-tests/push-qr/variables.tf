@@ -1,6 +1,7 @@
 variable "qr_payload" {
   description = "The content to be encoded in the QR push"
   type        = string
+  default     = "WiFi: MyNetwork;Password: s3cr3t"
 }
 
 variable "qr_note" {
