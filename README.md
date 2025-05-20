@@ -110,17 +110,11 @@ export PWPUSH_TOKEN="your-api-token"
 
 ---
 
-## Usage
-
-See [docs/resources/pwpush_push.md](./pwpush_push_resource.md) for full resource documentation.
-
----
-
 ## 🧩 Supported Resources
 
 | Resource       | Docs                                  | Example                       | Status                                                        | E2E Tests             |
 |----------------|---------------------------------------|-------------------------------|---------------------------------------------------------------|-----------------------|
-| `pwpush_push`  | [push](docs/resources/pwpush_push.md) | [example (push*)](examples/)     | ![Done](https://img.shields.io/badge/status-done-brightgreen) |  ✅ Daily verified    |
+| `pwpush_push`  | [push](docs/resources/push.md) | [example (push*)](examples/)     | ![Done](https://img.shields.io/badge/status-done-brightgreen) |  ✅ Daily verified    |
 
 ---
 

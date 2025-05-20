@@ -110,7 +110,7 @@ Maintained by [Tomáš Grulich](https://github.com/grulicht).
 
 ## 📜 License
 
-This provider is licensed under the [MIT License](./LICENSE).
+This provider is licensed under the [MIT License](https://github.com/grulicht/terraform-provider-pwpush/blob/main/LICENSE).
 
 ---
 
