@@ -9,8 +9,8 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
-	"strings"
 	"path/filepath"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -99,12 +99,12 @@ func resourcePwpushPushCreate(ctx context.Context, d *schema.ResourceData, m int
 
 	// Optional fields
 	for key, tfKey := range map[string]string{
-		"password[kind]":               "kind",
-		"password[note]":               "note",
-		"password[name]":               "name",
-		"password[passphrase]":         "passphrase",
-		"password[expire_after_days]":  "expire_after_days",
-		"password[expire_after_views]": "expire_after_views",
+		"password[kind]":                "kind",
+		"password[note]":                "note",
+		"password[name]":                "name",
+		"password[passphrase]":          "passphrase",
+		"password[expire_after_days]":   "expire_after_days",
+		"password[expire_after_views]":  "expire_after_views",
 		"password[deletable_by_viewer]": "deletable_by_viewer",
 		"password[retrieval_step]":      "retrieval_step",
 		"password[account_id]":          "account_id",

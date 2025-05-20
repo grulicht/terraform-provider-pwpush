@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     pwpush = {
-      source  = "grulicht/pwpush"
+      source = "grulicht/pwpush"
     }
   }
 }
