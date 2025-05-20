@@ -23,7 +23,7 @@ jobs:
 
       - name: 🧪 Run Terraform E2E tests
         run: |
-          FULL_CYCLE_DIRS=("push-qr" "push-string" "push-url")
+          FULL_CYCLE_DIRS=("push-qr" "push-string")
 
           for dir in "${FULL_CYCLE_DIRS[@]}"; do
             if [ -d "e2e-tests/$dir" ]; then
@@ -37,3 +37,12 @@ jobs:
               cd -
             fi
           done
+
+      - name: 🧪 Run Terraform E2E tests (push-url)
+        run: |
+          echo "▶️ Running full Terraform cycle in e2e-tests/push-url"
+          cd "e2e-tests/$dir"
+          terraform init -input=false
+          terraform fmt -check
+          terraform validate
+          terraform apply -auto-approve
