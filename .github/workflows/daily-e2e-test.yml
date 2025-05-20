@@ -1,0 +1,42 @@
+name: Daily E2E Tests
+
+on:
+  schedule:
+    - cron: "0 7 * * *" # Every day at 07:00 UTC
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐳 Start Pwpush via Docker Compose
+        run: make up
+
+      - name: ⬇️ Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: 🔍 Validate formatting (terraform fmt)
+        run: terraform fmt -check -recursive
+
+      - name: 🧪 Run Terraform E2E tests
+        run: |
+          FULL_CYCLE_DIRS=("push-qr" "push-string" "push-url")
+
+          for dir in "${FULL_CYCLE_DIRS[@]}"; do
+            if [ -d "e2e-tests/$dir" ]; then
+              echo "▶️ Running full Terraform cycle in e2e-tests/$dir"
+              cd "e2e-tests/$dir"
+              terraform init -input=false
+              terraform fmt -check
+              terraform validate
+              terraform apply -auto-approve
+              terraform destroy -auto-approve
+              cd -
+            fi
+          done

@@ -1,0 +1,50 @@
+name: PR E2E Tests
+
+on:
+  pull_request:
+
+jobs:
+  e2e-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Build local provider
+        run: make build
+
+      - name: 🧩 Install local provider plugin
+        run: make install-plugin
+
+      - name: 🩹 Patch main.tf files to use local provider
+        run: |
+          find e2e-tests -name "main.tf" -exec sed -i 's|source *= *"grulicht/pwpush"|source = "localdomain/local/pwpush"|' {} +
+
+      - name: 🐳 Start Pwpush via Docker Compose
+        run: make up
+
+      - name: ⬇️ Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: 🔍 Validate formatting (terraform fmt)
+        run: terraform fmt -check -recursive
+
+      - name: 🧪 Run Terraform E2E tests
+        run: |
+          FULL_CYCLE_DIRS=("push-qr" "push-string" "push-url")
+
+          for dir in "${FULL_CYCLE_DIRS[@]}"; do
+            if [ -d "e2e-tests/$dir" ]; then
+              echo "▶️ Running full Terraform cycle in e2e-tests/$dir"
+              cd "e2e-tests/$dir"
+              terraform init -input=false
+              terraform fmt -check
+              terraform validate
+              terraform apply -auto-approve
+              terraform destroy -auto-approve
+              cd -
+            fi
+          done
