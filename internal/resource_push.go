@@ -208,7 +208,6 @@ func resourcePwpushPushDelete(ctx context.Context, d *schema.ResourceData, m int
 		// Read body just in case
 		body, _ := io.ReadAll(resp.Body)
 		if strings.Contains(string(body), "already expired") {
-			// Treat as success
 			d.SetId("")
 			return nil
 		}
