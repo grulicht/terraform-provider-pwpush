@@ -204,6 +204,16 @@ func resourcePwpushPushDelete(ctx context.Context, d *schema.ResourceData, m int
 	}
 	defer resp.Body.Close()
 
+	if resp.StatusCode == 404 || resp.StatusCode == 422 {
+		// Read body just in case
+		body, _ := io.ReadAll(resp.Body)
+		if strings.Contains(string(body), "already expired") {
+			d.SetId("")
+			return nil
+		}
+		return diag.Errorf("failed to delete push: %d - %s", resp.StatusCode, body)
+	}
+
 	if resp.StatusCode != 200 && resp.StatusCode != 204 {
 		body, _ := io.ReadAll(resp.Body)
 		return diag.Errorf("failed to delete push: %d - %s", resp.StatusCode, body)

@@ -19,8 +19,7 @@ func Provider() *schema.Provider {
 			"endpoint": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Default:     "https://pwpush.com",
-				DefaultFunc: schema.EnvDefaultFunc("PWPUSH_ENDPOINT", nil),
+				DefaultFunc: schema.EnvDefaultFunc("PWPUSH_ENDPOINT", "https://pwpush.com"),
 				Description: "Base URL of the Password Pusher service.",
 			},
 			"email": {
