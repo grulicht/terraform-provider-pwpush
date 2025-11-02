@@ -1,6 +1,6 @@
-# 🔐 Pwpush Terraform Provider
+# 🔐 Pwpush Terraform/OpenTofu Provider
 
-A [Terraform](https://www.terraform.io) provider to manage secure one-time secret pushes using [Password Pusher](https://github.com/pglombardo/PasswordPusher) via its REST API.
+A Terraform/OpenTofu provider to manage secure one-time secret pushes using [Password Pusher](https://github.com/pglombardo/PasswordPusher) via its REST API.
 
 It supports provisioning of pushes with text, URLs, QR codes, or attached files, including optional expirations, passphrases, and notes.
 
@@ -134,5 +134,5 @@ This provider is licensed under the [MIT License](https://github.com/grulicht/te
 ## 🌐 Acknowledgements
 
 - [Password Pusher](https://pwpush.com)
-- [HashiCorp Terraform](https://www.terraform.io)
+- HashiCorp Terraform
 - [OpenTofu](https://opentofu.org/)

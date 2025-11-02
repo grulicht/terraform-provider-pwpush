@@ -30,9 +30,9 @@
   </p>
 </p>
 
-# Pwpush Terraform Provider
+# Pwpush Terraform/OpenTofu Provider
 
-A [Terraform](https://www.terraform.io) provider to manage [Password Pusher](https://pwpush.com/) resources via its REST API using Terraform.
+A Terraform/Opentofu provider to manage [Password Pusher](https://pwpush.com/) resources via its REST API using Terraform.
 
 It supports provisioning and configuration of secure one-time pushes – including secrets, files, URLs, and QR codes – with expiration and passphrase protection.
 
@@ -218,5 +218,5 @@ MIT License. See [LICENSE](./LICENSE).
 ## 🙌 Acknowledgements
 
 - [Password Pusher](https://pwpush.com)
-- [HashiCorp Terraform](https://www.terraform.io)
+- HashiCorp Terraform
 - [OpenTofu](https://opentofu.org)
