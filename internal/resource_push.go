@@ -190,37 +190,31 @@ func resourcePwpushPushDelete(ctx context.Context, d *schema.ResourceData, m int
 	if err != nil {
 		return diag.FromErr(err)
 	}
-
 	if client.Email != "" {
 		req.Header.Set("X-User-Email", client.Email)
 	}
 	if client.Token != "" {
 		req.Header.Set("X-User-Token", client.Token)
 	}
-
 	resp, err := client.HTTPClient.Do(req)
 	if err != nil {
 		return diag.FromErr(err)
 	}
 	defer resp.Body.Close()
-
-	if resp.StatusCode == 404 || resp.StatusCode == 422 {
-		// Read body just in case
-		body, _ := io.ReadAll(resp.Body)
-		if strings.Contains(string(body), "already expired") {
-			d.SetId("")
-			return nil
-		}
-		return diag.Errorf("failed to delete push: %d - %s", resp.StatusCode, body)
+	body, _ := io.ReadAll(resp.Body)
+	switch resp.StatusCode {
+	case 200, 204:
+		d.SetId("")
+		return nil
+	case 404:
+		d.SetId("")
+		return nil
+	case 410:
+		d.SetId("")
+		return nil
+	default:
+		return diag.Errorf("failed to delete pwpush resource (status: %d): %s", resp.StatusCode, strings.TrimSpace(string(body)))
 	}
-
-	if resp.StatusCode != 200 && resp.StatusCode != 204 {
-		body, _ := io.ReadAll(resp.Body)
-		return diag.Errorf("failed to delete push: %d - %s", resp.StatusCode, body)
-	}
-
-	d.SetId("")
-	return nil
 }
 
 // Read is a no-op, since pwpush does not offer GET /p/<id>.json without consuming the view
