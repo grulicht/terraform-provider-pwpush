@@ -1,6 +1,6 @@
 # 🚀 Terraform Provider for Password Pusher
 
-This repository contains a custom [Terraform](https://www.terraform.io/) provider for managing [Password Pusher](https://pwpush.com/). It includes a full development environment using [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) for easy local development and testing.
+This repository contains a custom Terraform/OpenTofu provider for managing [Password Pusher](https://pwpush.com/). It includes a full development environment using [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) for easy local development and testing.
 
 ---
 
